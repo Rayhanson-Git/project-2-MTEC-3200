@@ -1,0 +1,15 @@
+flowchart TD
+    I["Input: equipment, requests, notes, loan updates"]
+    L["Expo app logic: validate inputs and submit actions"]
+    A["External service: Supabase Auth"]
+    S["Supabase API: permission and status checks"]
+    D["Data: users, equipment, loans, notes"]
+    O["Output: availability, loan status, confirmations, errors"]
+    I -->|"User action and details"| L
+    L -->|"Sign-in request"| A
+    A -->|"Authenticated session"| L
+    L -->|"Read or update request"| S
+    S -->|"Authorized reads and writes"| D
+    D -->|"Stored records"| S
+    S -->|"Results or errors"| L
+    L -->|"Updated information"| O
